@@ -20,7 +20,7 @@ exports.get = async function (req, res) {
     }
     // LINE WAJIB DIBAWA
     var $query = `
-    SELECT *,a.status AS status
+    SELECT *,a.id AS user_id,a.status AS status
     FROM user AS a 
     LEFT JOIN user_section AS b ON a.section_id = b.section_id
     Left JOIN user_department AS c ON b.department_id = c.department_id
@@ -30,6 +30,7 @@ exports.get = async function (req, res) {
         $query += ` AND a.${k}='${req.query[k]}'`;
       }
     }
+    console.log($query);
     if (req.query.page || req.query.limit) {
       var start = 0;
       if (req.query.page > 1) {
@@ -55,12 +56,7 @@ exports.insert = async function (req, res) {
   try {
     perf.start();
     req.body.created_by = req.headers.user_id;
-    const require_data = [
-      "user_name",
-      "user_email",
-      "user_password",
-      "section_id",
-    ];
+    const require_data = ["email", "nik"];
     for (const row of require_data) {
       if (!req.body[`${row}`]) {
         data.error = true;
@@ -88,7 +84,7 @@ exports.update = async function (req, res) {
   try {
     perf.start();
 
-    const require_data = ["user_id"];
+    const require_data = ["id"];
     for (const row of require_data) {
       if (!req.body[`${row}`]) {
         data.error = true;
@@ -105,7 +101,7 @@ exports.update = async function (req, res) {
 
     var _res = await models.update_query({
       data: req.body,
-      key: "user_id",
+      key: "id",
       table: "user",
     });
     if (_res.error) {
@@ -124,7 +120,7 @@ exports.delete = async function (req, res) {
   try {
     perf.start();
 
-    const require_data = ["user_id"];
+    const require_data = ["id"];
     for (const row of require_data) {
       if (!req.body[`${row}`]) {
         data.error = true;
@@ -136,7 +132,7 @@ exports.delete = async function (req, res) {
     var _res = await models.delete_query({
       data: req.body,
       table: "user",
-      key: "user_id",
+      key: "id",
       deleted: false,
     });
     return response.response(_res, res);
