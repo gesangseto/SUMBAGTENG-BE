@@ -16,26 +16,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // LOAD MIDDLEWARE OAUTH
-var middleware = require("./app/middleware/middleware");
-app.use(async function (req, res, next) {
-  if (
-    req.originalUrl == "/api/login/user" ||
-    (req.originalUrl == "/api/configuration" && req.method == "GET")
-  ) {
-    next();
-    return;
-  }
-  let check_token = await middleware.check_token(req, res);
-  let create_log = true;
-  if (check_token && req.method != "GET") {
-    create_log = await middleware.create_log(req, res);
-  }
-  if (check_token && create_log) {
-    next();
-    return;
-  }
-});
-// END MIDDLEWARE OAUTH
 
 var routes = require("./app/routes");
 routes(app);

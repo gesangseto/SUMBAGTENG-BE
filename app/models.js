@@ -103,7 +103,8 @@ async function insert_query({ data, key, table }) {
     total_row: 0,
     message: "Success",
   };
-  var column = `SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'${table}' AND TABLE_SCHEMA ='${process.env.DB_DATABASE}'`; column = await exec_query(column);
+  var column = `SELECT COLUMN_NAME  FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = N'${table}' AND TABLE_SCHEMA ='${process.env.DB_DATABASE}'`;
+  column = await exec_query(column);
   if (column.error) {
     data_set.error = true;
     data_set.message = column.message || "Oops, something wrong";
