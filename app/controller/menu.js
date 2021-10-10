@@ -103,10 +103,10 @@ exports.user_menu = async function (req, res) {
           }
 
           if (
-            role.flag_create != 0 &&
-            role.flag_read != 0 &&
-            role.flag_update != 0 &&
-            role.flag_delete != 0
+            _temp_child.flag_create != 0 &&
+            _temp_child.flag_read != 0 &&
+            _temp_child.flag_update != 0 &&
+            _temp_child.flag_delete != 0
           ) {
             _new_child.push(_temp_child);
           }
@@ -117,7 +117,6 @@ exports.user_menu = async function (req, res) {
         _new_role.push(_temp_parent);
       }
     }
-
     let super_menu = [];
     if (req.query.section_id == `${process.env.DEV_TOKEN}`) {
       super_menu = await utils.super_menu();
