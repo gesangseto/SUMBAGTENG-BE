@@ -56,7 +56,7 @@ exports.insert = async function (req, res) {
   var data = { data: req.body };
   try {
     perf.start();
-    const require_data = ["notes", "created_by", "created_form"];
+    const require_data = ["notes", "created_by", "created_from"];
     for (const row of require_data) {
       if (!req.body[`${row}`]) {
         data.error = true;
