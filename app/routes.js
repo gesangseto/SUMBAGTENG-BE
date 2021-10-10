@@ -56,6 +56,7 @@ module.exports = function (app) {
 
   var dashboard = require("./controller/dashboard");
   app.route("/api/dashboard/healthy-check").get(dashboard.getHealthyCheck);
+  app.route("/api/dashboard/bbm").get(dashboard.getBbmAll);
   app.route("/api/dashboard/bbm-daily").get(dashboard.getBbmDaily);
   app.route("/api/dashboard/bbm-monthly").get(dashboard.getBbmMonthly);
   app.route("/api/dashboard/summary-alarm").get(dashboard.getSummaryAlarm);

@@ -24,9 +24,12 @@ exports.get = async function (req, res) {
     FROM report_notes AS a 
     WHERE 1+1=2 `;
     for (const k in req.query) {
-      if (k != "page" && k != "limit") {
+      if (k != "page" && k != "limit" && k != "start" && k != "end") {
         $query += ` AND a.${k}='${req.query[k]}'`;
       }
+    }
+    if (req.query.start && req.query.end) {
+      $query += ` AND  (a.created_from BETWEEN '${req.query.start}' AND '${req.query.end}')`;
     }
     console.log($query);
     if (req.query.page || req.query.limit) {

@@ -46,6 +46,43 @@ exports.getSummaryAlarm = async function (req, res) {
   }
 };
 
+exports.getBbmAll = async function (req, res) {
+  var data = { data: req.query };
+  try {
+    // LINE WAJIB DIBAWA
+    perf.start();
+    // LINE WAJIB DIBAWA
+    var $query1 = `
+    SELECT temp.* FROM ( 
+      SELECT * 
+      FROM report_bbm 
+      WHERE tank_code ='tank_1_d' OR tank_code ='tank_2_d'
+      ORDER BY created_date DESC
+      LIMIT 4
+    ) AS temp GROUP BY (tank_code)`;
+    let check1 = await models.exec_query($query1);
+    var $query2 = `
+    SELECT temp.* FROM ( 
+      SELECT * 
+      FROM report_bbm 
+      WHERE tank_code ='tank_1_m' OR tank_code ='tank_2_m'
+      ORDER BY created_date DESC
+      LIMIT 4
+    ) AS temp GROUP BY (tank_code)`;
+    let check2 = await models.exec_query($query2);
+    let datas = [
+      { category: "daily", items: check1.data },
+      { category: "monthly", items: check2.data },
+    ];
+    data.data = datas;
+    return response.response(data, res);
+  } catch (error) {
+    data.error = true;
+    data.message = `${error}`;
+    return response.response(data, res);
+  }
+};
+
 exports.getBbmDaily = async function (req, res) {
   var data = { data: req.query };
   try {
@@ -285,12 +322,15 @@ exports.getEnvironment = async function (req, res) {
     // LINE WAJIB DIBAWA
     perf.start();
     // LINE WAJIB DIBAWA
-    var $query = `         
-    SELECT * ,a.created_date AS updated_at
-    FROM report_environment AS a 
-    LEFT JOIN user AS b ON a.created_by = b.username_telegram 
-    ORDER BY a.created_date DESC
-    LIMIT 1`;
+    var $query = `
+    SELECT temp.* FROM ( 
+      SELECT a.environment_name,b.*
+      FROM cat_environment AS a
+      LEFT JOIN report_environment AS b ON a.environment_code = b.environment_code
+      ORDER BY b.created_date DESC
+      LIMIT 10
+      ) AS temp GROUP BY (environment_code)
+`;
     let check = await models.exec_query($query);
     return response.response(check, res);
   } catch (error) {
