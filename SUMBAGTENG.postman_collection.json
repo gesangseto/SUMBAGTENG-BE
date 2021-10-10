@@ -1,0 +1,692 @@
+{
+	"info": {
+		"_postman_id": "ed4ef71f-74aa-4e08-8f13-3db1bd163762",
+		"name": "SUMBAGTENG",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Report Notes",
+					"item": [
+						{
+							"name": "Get",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{development}}/api/report/note",
+									"host": [
+										"{{development}}"
+									],
+									"path": [
+										"api",
+										"report",
+										"note"
+									],
+									"query": [
+										{
+											"key": "dksajkda",
+											"value": "0-900",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Insert",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "token",
+										"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "notes",
+											"value": "gesang",
+											"type": "text"
+										},
+										{
+											"key": "created_by",
+											"value": "gesangseto@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "created_form",
+											"value": "2021-10-10",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{development}}/api/report/note",
+									"host": [
+										"{{development}}"
+									],
+									"path": [
+										"api",
+										"report",
+										"note"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "12",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token",
+										"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n            \"id\": 5,\n            \"notes\": \"TEST ID5\",\n            \"created_date\": null,\n            \"created_by\": \"gesangseto@gmail.com\",\n            \"created_from\": null\n        }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{development}}/api/report/note",
+									"host": [
+										"{{development}}"
+									],
+									"path": [
+										"api",
+										"report",
+										"note"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "token",
+										"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "id",
+											"value": "3",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{development}}/api/report/note",
+									"host": [
+										"{{development}}"
+									],
+									"path": [
+										"api",
+										"report",
+										"note"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Healthy Check",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/healthy-check",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"healthy-check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BBM Daily",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/bbm-daily",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"bbm-daily"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BBM All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/bbm",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"bbm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BBM Monthly All",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/bbm-monthly",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"bbm-monthly"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "summary alarm",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/summary-alarm",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"summary-alarm"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pic",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/pic",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"pic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "activity",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/activity",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "power-condition",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/power-condition",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"power-condition"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "backup-time",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/backup-time",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"backup-time"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "temp-humidities",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/temp-humidities",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"temp-humidities"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "environment",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "151.106.112.32:1001/api/dashboard/environment",
+							"host": [
+								"151",
+								"106",
+								"112",
+								"32"
+							],
+							"port": "1001",
+							"path": [
+								"api",
+								"dashboard",
+								"environment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "event-notes",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "OY0TC9T7iyCbHGtixotgyXzDbXR4cnMP",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_name",
+									"value": "super_admin",
+									"type": "text"
+								},
+								{
+									"key": "user_password",
+									"value": "p@ssw0rd",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{development}}/api/dashboard/event-notes",
+							"host": [
+								"{{development}}"
+							],
+							"path": [
+								"api",
+								"dashboard",
+								"event-notes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
