@@ -240,7 +240,7 @@ exports.getActivity = async function (req, res) {
     // LINE WAJIB DIBAWA
     var $query = `         
     SELECT * ,a.created_date AS updated_at
-    FROM report_bbm AS a 
+    FROM report_activities AS a 
     LEFT JOIN user AS b ON a.created_by = b.username_telegram 
     ORDER BY a.created_date DESC
     LIMIT 1`;
