@@ -16,6 +16,15 @@ exports.getHealthyCheck = async function (req, res) {
     WHERE DATE(created_date) = CURDATE()
 	  GROUP BY status_kesehatan ASC `;
     let check = await models.exec_query($query);
+    let newData = [];
+    for (const it of check.data) {
+      let temp = it;
+      if (it.title == "Sehat") temp.color = "green";
+      if (it.title == "Kurang Fit") temp.color = "yellow";
+      if (it.title == "Sakit") temp.color = "red";
+      newData.push(temp);
+    }
+    check.data = newData;
     return response.response(check, res);
   } catch (error) {
     data.error = true;
@@ -60,7 +69,6 @@ exports.getBbmAll = async function (req, res) {
       ORDER BY created_date DESC
       LIMIT 4
     ) AS temp GROUP BY (tank_code)`;
-    let check1 = await models.exec_query($query1);
     var $query2 = `
     SELECT temp.* FROM ( 
       SELECT * 
@@ -69,10 +77,49 @@ exports.getBbmAll = async function (req, res) {
       ORDER BY created_date DESC
       LIMIT 4
     ) AS temp GROUP BY (tank_code)`;
+    let check1 = await models.exec_query($query1);
+    let data_1 = [];
+    for (const it of check1.data) {
+      let temp = it;
+      temp.detail = [
+        {
+          name: "Available",
+          value: parseInt(it.available),
+          description: `${it.available} L`,
+          color: "#30f229",
+        },
+        {
+          name: "Used",
+          value: parseInt(it.used),
+          description: `${it.used} L`,
+          color: "#ff1f1f",
+        },
+      ];
+      data_1.push(temp);
+    }
     let check2 = await models.exec_query($query2);
+    let data_2 = [];
+    for (const it of check2.data) {
+      let temp = it;
+      temp.detail = [
+        {
+          name: "Available",
+          value: parseInt(it.available),
+          description: `${it.available} L`,
+          color: "#30f229",
+        },
+        {
+          name: "Used",
+          value: parseInt(it.used),
+          description: `${it.used} L`,
+          color: "#ff1f1f",
+        },
+      ];
+      data_2.push(temp);
+    }
     let datas = [
-      { category: "daily", items: check1.data },
-      { category: "monthly", items: check2.data },
+      { category: "daily", items: data_1 },
+      { category: "monthly", items: data_2 },
     ];
     data.data = datas;
     return response.response(data, res);
